@@ -1,0 +1,9 @@
+{
+  "drop_columns": [],
+  "outcome_columns": [],
+  
+  "preprocessing": {
+    "ont_hot_columns": [],
+    "float_columns": []
+  }
+}
