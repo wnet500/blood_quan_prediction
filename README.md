@@ -32,7 +32,8 @@ __train_data_file__ = "test_df.csv"
 ```
 pytest -s -v tests/test_gridsearch.py
 ```
-- `output/gridsearch_results` 폴더 내, `lr_results.csv`, `rf_results.csv`, `xgb_results.csv` 각 결과 파일 확인
+- `output/gridsearch_results` 폴더 내,    
+`lr_results.csv`, `rf_results.csv`, `xgb_results.csv` 각 결과 파일 확인
 
 ## 3. 최종 모델 학습 및 평가
 - 각 모델(알고리즘)의 최적 파라미터와 전체 train sets 데이터를 사용하여 최종모델 학습
