@@ -1,0 +1,19 @@
+{
+  "drop_columns": ["PT_pct", "PT_sec", "msbos"],
+  "outcome_columns": ["use_quan"],
+  
+  "preprocessing": {
+    "one_hot_columns": ["surgeon_dept_cd", "anesthesia_cd", "sex"],
+    "float_columns": [
+      "ami", "chf", "pud", "mld", "diab",
+      "diabwc", "hp", "rend", "canc", "msld",
+      "metacanc", "aids", "heparins", "direct_factor_Xa_inhibitors", "coumarin_deriatives",
+      "miscellaneous_anticoagulants", "direct_thrombin_inhibitors",
+      
+      "age", "score", "aPTT", "Hb", "Plt",
+      "PT_inr", "mean_use_quan", "sd_use_quan", "lci95_use_quan", "uci95_use_quan",
+      
+      "use_quan"
+    ]
+  }
+}
