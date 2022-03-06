@@ -61,7 +61,7 @@ def test_xgb_evaluation(X_y_datasets, model_trainer):
       .head(1)[["param", "early_stopping_round_mean"]].values[0]
   
   X_test, y_test = X_y_datasets["X_test"], X_y_datasets["y_test"]
-  tree_method = "gpu_hist"
+  tree_method = "auto"  # "gpu_hist"
   xgb_model = model_trainer.train_xgboost(param=eval(best_param), tree_method=tree_method, n_estimators=int(n_estimators))
   y_pred = adjust_pred_value(xgb_model.predict(X_test))
   print()

@@ -41,7 +41,7 @@ def test_conduct_xgb_cv(param_search):
       'reg_lambda': [2],
       'subsample': [0.8]
   }
-  tree_method = "gpu_hist"  # "auto"
+  tree_method = "auto"  # "gpu_hist"
   valid_size_in_whole_datasets = 0.1
   valid_size_in_trainval = valid_size_in_whole_datasets / (1 - (1 / CV_N_SPLITS))
   param_search.conduct_xgb_cv(grid_params, tree_method, valid_size_in_trainval)
