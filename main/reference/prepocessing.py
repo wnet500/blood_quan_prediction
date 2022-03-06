@@ -47,7 +47,7 @@ class DataProcessor:
 
     dummy_datasets = self.convert_into_dummy_coded_datasets(
         df=datasets,
-        one_hot_vars=self.datasets_info["preprocessing"]["ont_hot_columns"],
+        one_hot_vars=self.datasets_info["preprocessing"]["one_hot_columns"],
         float_vars=self.datasets_info["preprocessing"]["float_columns"]
     )
 
