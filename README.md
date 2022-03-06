@@ -28,6 +28,7 @@ __train_data_file__ = "test_df.csv"
 - `tests/test_gridsearch.py`내부에 서치할 파라미터 `grid_params`변경
 변경하지 않을 시, 기본으로 설정되어 있는 파라미터 셋으로 서치 진행
 - cross validation 코드 수정 (기본: 5-fold cv)
+- gpu 사용시, `tree_method=gpu_hist`로 변경
 - 그리드 서치 수행
 ```
 pytest -s -v tests/test_gridsearch.py
@@ -39,6 +40,7 @@ pytest -s -v tests/test_gridsearch.py
 - 각 모델(알고리즘)의 최적 파라미터와 전체 train sets 데이터를 사용하여 최종모델 학습
 - test sets를 사용하여 최종모델 성능 평가
   - 평가 지표: mse, adjusted r2
+- gpu 사용시, `tree_method=gpu_hist`로 변경
 - 최종 모델 학습 및 평가 수행
 ```
 pytest -s -v tests/test_model_evaluation.py
