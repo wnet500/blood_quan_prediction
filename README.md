@@ -46,3 +46,7 @@ pytest -s -v tests/test_gridsearch.py
 pytest -s -v tests/test_model_evaluation.py
 ```
 - print되어 화면에 나타나는 정보 확인
+
+## 4. 파이토치 버젼 정보
+- torch: `1.10.2+cu113`
+- pytorch_lightning: `1.5.10`
