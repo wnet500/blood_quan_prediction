@@ -1,6 +1,10 @@
 numpy
 pandas
+pytorch-lightning
 sklearn
 xgboost
 pytest
 shap
+torch
+torchvision
+torchaudio

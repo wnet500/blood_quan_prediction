@@ -45,3 +45,13 @@ def test_conduct_xgb_cv(param_search):
   valid_size_in_whole_datasets = 0.1
   valid_size_in_trainval = valid_size_in_whole_datasets / (1 - (1 / CV_N_SPLITS))
   param_search.conduct_xgb_cv(grid_params, tree_method, valid_size_in_trainval)
+
+
+def test_conduct_ann_cv(param_search):
+  grid_params = {
+      'num_layers': [1],
+      'num_units': [50]
+  }
+  valid_size_in_whole_datasets = 0.1
+  valid_size_in_trainval = valid_size_in_whole_datasets / (1 - (1 / CV_N_SPLITS))
+  param_search.conduct_ann_cv(grid_params=grid_params, valid_size_in_trainval=valid_size_in_trainval)

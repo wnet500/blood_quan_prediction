@@ -25,3 +25,10 @@ def get_95_conf_interval(x):
       scale=st.sem(x)
   )
   return [np.mean(x), lower, upper]
+
+
+def disable_logging_and_userwaring():
+  import warnings
+  import logging
+  warnings.filterwarnings("ignore", category=UserWarning)
+  logging.getLogger("pytorch_lightning").setLevel(logging.WARNING)
