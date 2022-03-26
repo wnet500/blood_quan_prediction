@@ -1,6 +1,7 @@
 {
   "drop_columns": ["PT_pct", "PT_sec", "msbos"],
   "outcome_columns": ["use_quan"],
+  "prev_practice_column": ["msbos"],
   
   "preprocessing": {
     "one_hot_columns": ["surgeon_dept_cd", "anesthesia_cd", "sex"],

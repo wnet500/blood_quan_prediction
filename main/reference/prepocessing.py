@@ -56,11 +56,40 @@ class DataProcessor:
 
     return [train_data, test_data]
 
+  def make_prev_practice_datasets(self) -> List[np.ndarray]:
+    train_data, test_data = self.load_raw_datasets()
+
+    prev_practice_trainval = train_data.filter(
+        items=self.datasets_info["prev_practice_column"],
+        axis="columns"
+    ).squeeze()
+    y_trainval = train_data.filter(
+        items=self.datasets_info["outcome_columns"],
+        axis="columns"
+    ).squeeze()
+
+    prev_practice_test = test_data.filter(
+        items=self.datasets_info["prev_practice_column"],
+        axis="columns"
+    ).squeeze()
+    y_test = test_data.filter(
+        items=self.datasets_info["outcome_columns"],
+        axis="columns"
+    ).squeeze()
+
+    return [prev_practice_trainval.values, prev_practice_test.values, y_trainval.values, y_test.values]
+
   def make_X_y_datasets(self) -> List[np.ndarray]:
     trainval_datasets, test_datasets = self.make_ml_datasets()
     X_trainval = trainval_datasets.drop(columns=self.datasets_info["outcome_columns"])
-    y_trainval = trainval_datasets.filter(items=self.datasets_info["outcome_columns"], axis="columns").squeeze()
+    y_trainval = trainval_datasets.filter(
+        items=self.datasets_info["outcome_columns"],
+        axis="columns"
+    ).squeeze()
     X_test = test_datasets.drop(columns=self.datasets_info["outcome_columns"])
-    y_test = test_datasets.filter(items=self.datasets_info["outcome_columns"], axis="columns").squeeze()
+    y_test = test_datasets.filter(
+        items=self.datasets_info["outcome_columns"],
+        axis="columns"
+    ).squeeze()
 
     return [X_trainval.values, X_test.values, y_trainval.values, y_test.values]

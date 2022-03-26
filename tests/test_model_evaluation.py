@@ -3,7 +3,7 @@ import pytest
 import torch
 
 from pathlib import Path
-from sklearn.metrics import mean_squared_error
+from sklearn.metrics import mean_squared_error, r2_score
 from torch.utils.data import DataLoader
 
 from main.reference.modeling import ModelTrainer
@@ -15,8 +15,12 @@ from tests import __test_data_file__ as test
 
 
 @pytest.fixture
-def X_y_datasets():
-  data_processor = DataProcessor(train, test)
+def data_processor():
+  return DataProcessor(train, test)
+
+
+@pytest.fixture
+def X_y_datasets(data_processor):
   X_trainval, X_test, y_trainval, y_test = data_processor.make_X_y_datasets()
   data_dict = {
       "X_trainval": X_trainval, "X_test": X_test,
@@ -89,7 +93,7 @@ def test_ann_evaluation(X_y_datasets, model_trainer):
   ann_trainer, ann_model = model_trainer.train_ann(
       param=eval(best_param),
       num_epochs=int(epoch),
-      has_bar_callback=False, 
+      has_bar_callback=False,
       save_model_file="final_ann_model"
   )
   results = ann_trainer.predict(ann_model, dataloaders=testset_loader)
@@ -97,3 +101,11 @@ def test_ann_evaluation(X_y_datasets, model_trainer):
   print()
   print(f"ann_mse: {mean_squared_error(y_test, adjust_pred_value(y_pred)):.3f}")
   print(f"ann_adj_r2: {get_adjusted_r2(y_test, adjust_pred_value(y_pred), X_test.shape[1]):.3f}")
+
+
+def test_prev_practice_evaluation(data_processor):
+  _, prev_practice_test, _, y_test = data_processor.make_prev_practice_datasets()
+
+  print()
+  print(f"msbos_mse: {mean_squared_error(y_test, prev_practice_test):.3f}")
+  print(f"msbos_r2: {r2_score(y_test, prev_practice_test):.3f}")
